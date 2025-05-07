@@ -1,0 +1,1 @@
+表达式: $.result[0], 预期结果: tokenId, 实际结果: {'tokenId': 443, 'name': 'Hippie139', 'img': 'https://d13jzms795fcv5.cloudfront.net/collection_NFT_test/market/15/443.png', 'owner': '0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d'}

@@ -1,0 +1,1 @@
+https://api.metaicon.minerhubs.link/api/v1/client/account/user_box_list?order=1&type=1&page=1&pageSize=20&collectId=36&address=0x84a6a5a7ba1af6b37ef7062c8f0f85ad52795f88&needCancelRequest=false&needCancelUrl=%2Faccount%2Fuser_box_list

@@ -1,0 +1,1 @@
+表达式: $.result[0], 预期结果: key, 实际结果: {'key': 'exitTime', 'value': '10'}

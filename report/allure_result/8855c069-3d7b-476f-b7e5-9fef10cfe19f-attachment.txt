@@ -1,0 +1,1 @@
+b'{"currencyId": "7", "goodIds": "27", "goodNum": "1", "paymentType": 1}'

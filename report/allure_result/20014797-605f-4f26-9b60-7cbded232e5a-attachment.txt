@@ -1,0 +1,1 @@
+{"code":0,"msg":"success","status":200,"result":{"ESID":"2400120","isBlue":0,"isDiamondHand":0,"isBindGame":1}}

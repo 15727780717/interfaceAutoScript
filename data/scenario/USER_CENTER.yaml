@@ -5,7 +5,7 @@
   # 需要提取的参数列表
   extract:
     - collectType: $.result[1].type  # 合集类型
-    - collectId: $.result[1].id  # 合集id
+    - collectId: $.result[1].collectId  # 合集id
   # 断言
   assertions:
     # 状态码断言
@@ -13,7 +13,7 @@
     # JSON响应断言
     - eq: ["$.code", 0]
     - eq: ["$.msg", "Query successfully"]
-    - contains: ["$.result", "chain"]
+    - contains: ["$.result[0]", "collectId"]
 
 - name: user_box_count
   request:

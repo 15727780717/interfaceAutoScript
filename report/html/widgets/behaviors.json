@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"ba71a2b3cb339e9bc73b76d46280767f","name":"API测试","statistic":{"failed":0,"broken":0,"skipped":0,"passed":43,"unknown":0,"total":43}},{"uid":"eefe2b53ae1957a61a46ba6ad8f80cea","name":"user_box_list单接口测试","statistic":{"failed":0,"broken":0,"skipped":0,"passed":3,"unknown":0,"total":3}}]}

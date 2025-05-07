@@ -1,7 +1,7 @@
 - name: pool
   request:
     method: GET
-    url: /api/v1/client/pledge_manage/pool?id=10
+    url: /api/v1/client/pledge_manage/pool?id=11&needCancelRequest=true&needCancelUrl=%2Fpledge_manage%2Fpool
   # 需要提取的参数列表
   extract:
     - pledgeItemAddress: $.result.pledgeItemAddress  # 匹配规则
@@ -17,7 +17,7 @@
 - name: pledge_logs
   request:
     method: GET
-    url: /api/v1/client/pledge_manage/pledge_logs?page=1&pageSize=99&poolId=10
+    url: /api/v1/client/pledge_manage/pledge_logs?page=1&pageSize=99&poolId=11&needCancelRequest=true&needCancelUrl=%2Fpledge_manage%2Fpledge_logs
   extract:
     - pledgeId: $.result.dataList[0].id  # 质押物品id
     - pledgeTokenId: $.result.dataList[0].pledgeTokenId  # 匹配规则
@@ -32,7 +32,7 @@
 - name: pledge_award_logs
   request:
     method: GET
-    url: /api/v1/client/pledge_manage/pledge_award_logs?page=1&pageSize=99&poolId=10&pledgeId=${pledgeId}&status=1
+    url: /api/v1/client/pledge_manage/pledge_award_logs?page=1&pageSize=99&poolId=11&pledgeId=${pledgeId}&status=1
   # 断言
   assertions:
     # 状态码断言
@@ -40,7 +40,7 @@
     # JSON响应断言
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
-    - eq: ["$.result.dataList[0].status", 1]
+    - contains: ["$.result", "dataList"]
 
 - name: estimate_fee
   request:

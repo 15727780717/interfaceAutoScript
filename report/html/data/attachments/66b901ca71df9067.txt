@@ -1,0 +1,6 @@
+[32mINFO    [0m api_test:request_handler.py:44 Request: GET https://api.metaicon.minerhubs.link/api/v1/client/account/info
+[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: None
+[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
+[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
+[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.518s
+[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"success","status":200,"result":{"mainWallet":"0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d","myBindCode":"GDLR3NT49","type":7,"addressList":[{"address":"0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d","loginType":7},{"address":"0x84A6A5a7Ba1aF6b37eF7062c8F0f85ad52795f88","loginType":8}]}}

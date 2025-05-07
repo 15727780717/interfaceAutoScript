@@ -1,0 +1,1 @@
+{"code":0,"msg":"success","status":200,"result":{"mainWallet":"0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d","myBindCode":"GDLR3NT49","type":7,"addressList":[{"address":"0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d","loginType":7},{"address":"0x84A6A5a7Ba1aF6b37eF7062c8F0f85ad52795f88","loginType":8}]}}
