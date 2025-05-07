@@ -1,6 +1,0 @@
-[32mINFO    [0m api_test:request_handler.py:44 Request: GET https://api.metaicon.minerhubs.link/api/v1/client/account/user_box_list?order=1&type=1&page=1&pageSize=20&collectId=36&address=&needCancelRequest=true&needCancelUrl=%2Faccount%2Fuser_box_list
-[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: None
-[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
-[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
-[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.479s
-[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"Query successfully","status":200,"result":{"boxList":[],"count":0}}

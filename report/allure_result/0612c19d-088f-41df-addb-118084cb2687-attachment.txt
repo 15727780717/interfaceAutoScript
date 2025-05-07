@@ -1,1 +1,0 @@
-表达式: $.result, 预期结果: token, 实际结果: {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiMHg3ZGE3YjNjMTBmYmQwNTBmYzljYjBkOWRmMjczZDlmODcxY2E2MjFkaWY3YjVlM2hxM3FyIiwibG9naW5UeXBlIjo3LCJpYXQiOjE3NDU0ODE2MjEsImV4cCI6MTc0NTUyNDgyMX0.cjW4x6R4dq4iWFMIIKaKj_zj6VVNqdzA-z3krVx32WE', 'isNew': False}

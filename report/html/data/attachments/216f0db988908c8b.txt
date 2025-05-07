@@ -1,1 +1,0 @@
-https://api.metaicon.minerhubs.link/api/v1/client/activity/point_goods?page=1&pageSize=20&name=&status=1
