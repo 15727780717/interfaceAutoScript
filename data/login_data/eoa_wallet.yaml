@@ -1,0 +1,15 @@
+- name: eoa_wallet_login
+  request:
+    method: GET
+    url: /api/v1/client/account/check_sign?sign=${get_eoa_sign()}&address=${get_eoa_wallet()}&timestamp=${get_timestamp()}
+    headers:
+      Content-Type: application/json
+    data:
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: [ "status_code", 200 ]
+    # JSON响应断言
+    - eq: [ "$.code", 0 ]
+    - eq: [ "$.msg", "success" ]
+    - contains: [ "$.result", "token" ]

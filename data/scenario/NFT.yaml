@@ -1,0 +1,51 @@
+- name: collect_list
+  request:
+    method: GET
+    url: /api/v1/client/gallery/collect_list
+  # ÐèÒªÌáÈ¡µÄ²ÎÊýÁÐ±í
+  extract:
+    - collectName: $.result[0].name  # ºÏ¼¯Ãû³Æ
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "Query successfully"]
+
+- name: collect_info
+  request:
+    method: GET
+    url: /api/v1/client/gallery/collect_info?collectName=${collectName}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "Query successfully"]
+
+- name: token_list
+  request:
+    method: GET
+    url: /api/v1/client/gallery/token_list?collectName=${collectName}&page=1&pageSize=20&address=${get_eoa_wallet()}&filterList=%5B%5D
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "Query successfully"]
+    - eq: ["$.status", 200]
+
+- name: latest
+  request:
+    method: GET
+    url: /api/v1/client/gameRank/latest?page=1&pageSize=10&rankType=16
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]

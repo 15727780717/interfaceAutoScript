@@ -1,0 +1,66 @@
+- name: get_activity_list
+  request:
+    method: GET
+    url: /api/v1/client/activity/get_activity_list?page=1&pageSize=20&name=&tagIdsStr=&status=1
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: mine
+  request:
+    method: GET
+    url: /api/v1/client/user-bind/mine
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: points
+  request:
+    method: GET
+    url: /api/v1/client/account/points
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: point_goods
+  request:
+    method: GET
+    url: /api/v1/client/activity/point_goods?page=1&pageSize=20&name=&status=1
+  extract:
+    - exchange_goodsId: $.result.dataList[0].id
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - eq: ["$.status", 200]
+
+- name: exchange
+  request:
+    method: POST
+    url: /api/v1/client/activity/point_goods/exchange
+    data:
+      count: 1
+      goodsId: ${exchange_goodsId}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 1]
+    - eq: ["$.errCode", "C10007"]
+    - eq: ["$.msg", "Insufficient points."]

@@ -1,0 +1,6 @@
+[32mINFO    [0m api_test:request_handler.py:44 Request: GET https://api.metaicon.minerhubs.link/api/v1/client/gameRank/latest?page=1&pageSize=10&rankType=16
+[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: None
+[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
+[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
+[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.167s
+[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"success","result":{"count":2,"dataList":[{"ESID":"2400390","name":"Garrick.2400390","headUrl":"https://d13jzms795fcv5.cloudfront.net/collection_NFT_test/market/15/351.png","score":13000,"rank":1,"tokenId":351},{"ESID":"1004720","name":"Melville.1004720","headUrl":"https://d13jzms795fcv5.cloudfront.net/collection_NFT_test/market/15/404.png","score":2000,"rank":2,"tokenId":404}],"resetTime":1733443140000}}

@@ -1,0 +1,42 @@
+- name: my_collect
+  request:
+    method: GET
+    url: /api/v1/client/transfer/my_collect?address=${get_eoa_wallet()}
+  # 需要提取的参数列表
+  extract:
+    - collectType: $.result[1].type  # 合集类型
+    - collectId: $.result[1].id  # 合集id
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "Query successfully"]
+    - contains: ["$.result", "chain"]
+
+- name: user_box_count
+  request:
+    method: GET
+    url: /api/v1/client/account/user_box_count
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "mysteryBoxCount"]
+
+- name: user_box_list
+  request:
+    method: GET
+    url: /api/v1/client/account/user_box_list?order=1&type=${collectType}&page=1&pageSize=20&collectId=${collectId}&address=${get_eoa_wallet()}&needCancelRequest=true&needCancelUrl=%2Faccount%2Fuser_box_list
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "Query successfully"]
+    - contains: ["$.result", "boxList"]

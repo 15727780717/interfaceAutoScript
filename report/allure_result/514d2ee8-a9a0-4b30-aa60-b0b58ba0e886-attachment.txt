@@ -1,0 +1,7 @@
+[32mINFO    [0m api_test:request_handler.py:44 Request: GET https://api.metaicon.minerhubs.link/api/v1/client/activityPlatformGroup?page=1&pageSize=9999
+[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: None
+[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
+[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
+[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.150s
+[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"success","result":{"count":4,"dataList":[{"id":1,"name":"DIAMONDS","desc":"Diamonds","img":"https://d13jzms795fcv5.cloudfront.net/backend-image/1742883544713-42x.png","isSeason":0,"sort":1,"status":1,"goodsCount":6},{"id":3,"name":"COLLECTOR","desc":"MIRBLITE COLLECTOR","img":"https://d13jzms795fcv5.cloudfront.net/backend-image/1742883586517-罐子金.png","isSeason":0,"sort":2,"status":1,"goodsCount":3},{"id":4,"name":"SAFETY BOX","desc":"SAFETY BOX","img":"https://d13jzms795fcv5.cloudfront.net/backend-image/1742884443358-保險箱金.png","isSeason":0,"sort":3,"status":1,"goodsCount":2},{"id":2,"name":"PARTYPASS","desc":"PARTYPASS","img":"https://d13jzms795fcv5.cloudfront.net/backend-image/1742883564696-组4.png","isSeason":1,"sort":4,"status":1,"goodsCount":3}]}}
+[32mINFO    [0m api_test:extract_parameters.py:37 Match to extract value：1

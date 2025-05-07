@@ -1,0 +1,140 @@
+# YAML文件 key不能重复，所以不同接口数据使用 list 封装
+- name: activityPlatformGroup
+  request:
+    method: GET
+    url: /api/v1/client/activityPlatformGroup?page=1&pageSize=9999
+  # 需要提取的参数列表
+  extract:
+    - groupId: $.result.dataList[0].id  # 匹配规则
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result.dataList[0].name", "DIAMONDS"]
+
+- name: activityPlatformGood
+  request:
+    method: GET
+    url: /api/v1/client/activityPlatformGood?page=1&pageSize=9999&address=${get_eoa_wallet()}&groupId=${groupId}&needCancelRequest=true&needCancelUrl=%2FactivityPlatformGood
+  extract:
+    - goodsId: $.result.dataList[0].id
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - eq: ["$.result.dataList[0].id", 27]
+
+- name: paymentCurrency/list
+  request:
+    method: GET
+    url: /api/v1/client/paymentCurrency/list?page=1&pageSize=100&address=${get_eoa_wallet()}&goodsId=${goodsId}&contractType=1%2C3
+  extract:
+    - currencyId: $.result.dataList[0].id
+    - contractAddress: $.result.dataList[0].contractAddress
+    - chainId: $.result.dataList[0].chainId
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - eq: ["$.result.dataList[0].currency", "MNT"]
+
+- name: pending
+  request:
+    method: GET
+    url: /api/v1/client/paymentOrder/pending
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: PaymentOrder
+  request:
+    method: POST
+    url: /api/v1/client/PaymentOrder
+    data:
+      currencyId: ${currencyId}
+      goodIds: ${goodsId}
+      goodNum: "1"
+      paymentType: 1
+  extract:
+    - orderId: $.result
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: get_abi
+  request:
+    method: GET
+    url: /api/v1/client/account/get_abi?address=${contractAddress}&chain=${chainId}
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: order_info
+  request:
+    method: GET
+    url: /api/v1/client/PaymentOrder/${orderId}
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - eq: ["$.result.currency", "MNT"]
+
+- name: order_polling
+  request:
+    method: GET
+    url: /api/v1/client/paymentOrder/status/${orderId}
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: order_cancle
+  request:
+    method: PUT
+    url: /api/v1/client/PaymentOrder/cancel/${orderId}
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: paymentOrder_list
+  request:
+    method: GET
+    url: /api/v1/client/paymentOrder/list?page=1&pageSize=10
+  # 断言
+  assertions:
+    # 状态码断言
+    - eq: ["status_code", 200]
+    # JSON响应断言
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]

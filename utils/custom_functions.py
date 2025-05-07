@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2025/4/11 17:16
+# @Author  : Cqq
+# @File    : custom_functions.py
+# Description: 自定义函数库
+import time
+import random
+import string
+from config.settings import config
+
+
+# 生成毫秒级时间戳
+def get_timestamp():
+    return int(time.time() * 1000)
+
+
+# 生成 1-100 之间的随机整数
+def get_randomInt():
+    return random.randint(0, 100)
+
+
+# 生成6位的随机字符串
+def generate_random_string():
+    letters = string.ascii_letters  # 包含所有字母的字符串
+    random_string = ''.join(random.choice(letters) for _ in range(6))
+    return random_string
+
+
+# 获取EOA钱包签名信息
+def get_eoa_sign():
+    return config.EOA_WALLET_SIGN
+
+
+# 获取EOA钱包地址
+def get_eoa_wallet():
+    return config.EOA_WALLET_ADDRESS
+
+
+if __name__ == '__main__':
+    print(get_timestamp())

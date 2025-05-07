@@ -1,0 +1,7 @@
+[32mINFO    [0m api_test:request_handler.py:44 Request: GET https://api.metaicon.minerhubs.link/api/v1/client/clans/detail
+[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: None
+[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
+[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
+[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.366s
+[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"success","result":{"rank":null,"id":10000001,"name":"test","icon":"https://d1gkwh0kirtt3g.cloudfront.net/images/Mirship/0.webp","tokenId":25,"tokenName":"Mirship box","tokenOwner":"0xa9bcf94a9aef6313e710b081a3cb7df04e45aff7","score":0,"totalCount":0,"winCount":0,"winRate":0,"desc":"testtety111","redeemClanRedeemLimit":null,"memberCount":3,"islandId":"000001","islandName":"Miragio","gameName":"以后","uuid":null,"ESID":"2400120","myMemberCount":2}}
+[32mINFO    [0m api_test:extract_parameters.py:37 Match to extract value：10000001

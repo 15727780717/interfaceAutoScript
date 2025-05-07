@@ -1,0 +1,6 @@
+[32mINFO    [0m api_test:request_handler.py:44 Request: GET https://api.metaicon.minerhubs.link/api/v1/client/user-bind/mine
+[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: None
+[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
+[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
+[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.395s
+[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"success","result":{"address":"0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d","myBindCode":"GDLR3NT49","bindAddress":"0x56FB4D2c91a2f058AB0a91D70a50eE5e86dcC7a0","bindESID":"1004760","bindClanId":10000003,"bindClanName":"flyn001","bindClanTokenId":44,"inviteCount":0,"inviteActiveCount":0,"receivedInvitePoints":0,"unreceivedInvitePoints":0}}
