@@ -1,1 +1,0 @@
-表达式: $.result.dataList[0].name, 预期结果: DIAMONDS, 实际结果: DIAMONDS

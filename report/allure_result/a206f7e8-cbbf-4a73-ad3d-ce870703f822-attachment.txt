@@ -1,1 +1,0 @@
-https://api.metaicon.minerhubs.link/api/v1/client/activity/get_activity_list?page=1&pageSize=20&name=&tagIdsStr=&status=1

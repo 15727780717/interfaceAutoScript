@@ -1,1 +1,0 @@
-https://api.metaicon.minerhubs.link/api/v1/client/transfer/my_collect?address=0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d

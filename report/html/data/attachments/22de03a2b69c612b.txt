@@ -1,1 +1,0 @@
-https://api.metaicon.minerhubs.link/api/v1/client/gallery/token_list?collectName=Mirbox&page=1&pageSize=20&address=0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d&filterList=%5B%5D

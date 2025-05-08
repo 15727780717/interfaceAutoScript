@@ -1,1 +1,0 @@
-表达式: $.result[0], 预期结果: clanName, 实际结果: {'tokenId': 42, 'nftName': 'Mirship box', 'nftImg': 'https://d1gkwh0kirtt3g.cloudfront.net/images/Mirship/0.webp', 'clanId': 10000010, 'clanName': 'testClub'}
