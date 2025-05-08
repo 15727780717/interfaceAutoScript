@@ -1,0 +1,1 @@
+https://api.metaicon.minerhubs.link/api/v1/client/account/get_abi?address=0xD00F213E8eC43F89d7b5B0Cbbd5A0AdE3Dbd4429&chain=1

@@ -32,6 +32,10 @@
   request:
     method: GET
     url: /api/v1/client/account/user_box_list?order=1&type=${collectType}&page=1&pageSize=20&collectId=${collectId}&address=${get_eoa_wallet()}&needCancelRequest=true&needCancelUrl=%2Faccount%2Fuser_box_list
+  extract:
+    - tokenId: $.result.boxList[0].tokenId
+    - contractAddress: $.result.boxList[0].contractAddress
+    - chainId: $.result.boxList[0].chain
   # ¶ÏÑÔ
   assertions:
     # ×´Ì¬Âë¶ÏÑÔ
@@ -40,3 +44,127 @@
     - eq: ["$.code", 0]
     - eq: ["$.msg", "Query successfully"]
     - contains: ["$.result", "boxList"]
+
+- name: get_box_detail
+  request:
+    method: GET
+    url: /api/v1/client/box/get_box_detail?collectId=${collectId}&tokenId=${tokenId}&address=${get_eoa_wallet()}
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "tokenId"]
+
+- name: get_abi
+  request:
+    method: GET
+    url: /api/v1/client/account/get_abi?address=${contractAddress}&chain=${chainId}
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: activity
+  request:
+    method: GET
+    url: /api/v1/client/transfer/activity?page=1&pageSize=10&type=All
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "Query successfully"]
+
+- name: get_point_list_All
+  request:
+    method: GET
+    url: /api/v1/client/activity/get_point_list?page=1&pageSize=10&isPay=-1
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: get_point_list_Reward
+  request:
+    method: GET
+    url: /api/v1/client/activity/get_point_list?page=1&pageSize=10&isPay=0
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: get_point_list_Purchase
+  request:
+    method: GET
+    url: /api/v1/client/activity/get_point_list?page=1&pageSize=10&isPay=1
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: get_total_point
+  request:
+    method: GET
+    url: /api/v1/client/activity/get_total_point
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "currentPoints"]
+
+- name: passports
+  request:
+    method: GET
+    url: /api/v1/client/passports?type=2&page=1&pageSize=10
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "collectId"]
+
+- name: paymentOrder_list
+  request:
+    method: GET
+    url: /api/v1/client/paymentOrder/list?page=1&pageSize=10
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "dataList"]
+
+- name: change_mainWallet
+  request:
+    method: POST
+    url: /api/v1/client/account/change_mainWallet
+    data:
+      address: ${get_eoa_wallet()}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]

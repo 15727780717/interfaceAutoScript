@@ -1,0 +1,1 @@
+{"code":0,"msg":"success","result":[{"key":"exitTime","value":"10"},{"key":"exchangeTime","value":"60"}]}

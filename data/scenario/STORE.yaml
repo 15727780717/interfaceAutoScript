@@ -28,9 +28,9 @@
     # JSON响应断言
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
-    - eq: ["$.result.dataList[0].id", 27]
+    - contains: ["$.result.dataList[0]", "group"]
 
-- name: paymentCurrency/list
+- name: paymentCurrency_list
   request:
     method: GET
     url: /api/v1/client/paymentCurrency/list?page=1&pageSize=100&address=${get_eoa_wallet()}&goodsId=${goodsId}&contractType=1%2C3

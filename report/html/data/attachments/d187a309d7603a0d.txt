@@ -1,0 +1,1 @@
+https://api.metaicon.minerhubs.link/api/v1/client/eth/estimate_fee?type=13&coin=eth&chain=1&tokenId=415&collectAddress=0xD00F213E8eC43F89d7b5B0Cbbd5A0AdE3Dbd4429

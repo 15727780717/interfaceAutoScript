@@ -1,0 +1,1 @@
+{"code":0,"msg":"success","status":200,"result":{"dataList":[{"id":286,"createTime":1734420135240,"activityName":"推特绑定加积分","isPay":0,"value":"130"},{"id":252,"createTime":1730186355476,"activityName":"Download game authentication","isPay":0,"value":"13"}],"count":2}}

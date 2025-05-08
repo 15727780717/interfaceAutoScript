@@ -1,0 +1,1 @@
+https://api.metaicon.minerhubs.link/api/v1/client/clans/invite_code?clanId=10000010

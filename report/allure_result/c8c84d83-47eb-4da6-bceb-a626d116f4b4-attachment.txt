@@ -1,0 +1,6 @@
+[32mINFO    [0m api_test:request_handler.py:44 Request: POST https://api.metaicon.minerhubs.link/api/v1/client/account/change_mainWallet
+[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: {'address': '0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d'}
+[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
+[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
+[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.393s
+[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"success","status":200,"result":"0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d"}

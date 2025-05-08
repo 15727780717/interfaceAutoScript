@@ -33,3 +33,39 @@
     # JSONÏìÓ¦¶ÏÑÔ
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
+
+- name: client_menu
+  request:
+    method: GET
+    url: /api/v1/client/config/client_menu
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: get_params_cfg
+  request:
+    method: GET
+    url: /api/v1/client/config/get_params_cfg
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+- name: client_other_entry
+  request:
+    method: GET
+    url: /api/v1/client/config/client_other_entry
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
