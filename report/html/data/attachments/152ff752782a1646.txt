@@ -1,1 +1,0 @@
-表达式: $.result.dataList[0], 预期结果: gameName, 实际结果: {'contractAddress': '0x9568d11a49dbebe82e4a1775e3100ee6400f7cc4', 'address': '0x84A6A5a7Ba1aF6b37eF7062c8F0f85ad52795f88', 'tokenId': 500000195, 'ESID': '2400120', 'gameName': '以后', 'gameIcon': '', 'gameIconId': 0, 'tokenImg': 'https://d1gkwh0kirtt3g.cloudfront.net/images/Mirpass_test/500000195.png', 'score': 0}

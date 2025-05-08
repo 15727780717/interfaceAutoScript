@@ -1,1 +1,0 @@
-{"code":0,"msg":"success","status":200,"result":{"pointCount":16,"currentPoints":30,"redeemedPoints":113,"accumulatedPoints":143,"accumulatedEncryptValue":"U2FsdGVkX1+9HLp2CAz1BbBfGv54OxBUOFlEesNoWns=","redeemedEncryptValue":"U2FsdGVkX19rCnEIlfHPUEr6+/jTOeemn0rC35QLkp0="}}

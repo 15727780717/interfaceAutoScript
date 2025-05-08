@@ -1,7 +1,0 @@
-[32mINFO    [0m api_test:request_handler.py:44 Request: GET https://api.metaicon.minerhubs.link/api/v1/client/pledge_manage/pool?id=11&needCancelRequest=true&needCancelUrl=%2Fpledge_manage%2Fpool
-[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: None
-[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
-[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
-[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.161s
-[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"success","result":{"id":11,"name":"OGX staking","title":"OGX staking","desc":"OGX staking","startTime":1746515015000,"endTime":1748671415000,"status":1,"pledgeItemAddress":"0xD00F213E8eC43F89d7b5B0Cbbd5A0AdE3Dbd4429","lastSettleTime":null,"settleIntervalDay":30,"nextSettleTime":1749107015000,"joinLimit":5,"chain":1,"collectType":1,"awardItems":[{"name":"1414","num":1,"awardIntervalMin":1440,"type":1}]}}
-[32mINFO    [0m api_test:extract_parameters.py:37 Match to extract value：0xD00F213E8eC43F89d7b5B0Cbbd5A0AdE3Dbd4429

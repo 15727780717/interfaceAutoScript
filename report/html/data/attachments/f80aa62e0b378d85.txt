@@ -1,6 +1,0 @@
-[32mINFO    [0m api_test:request_handler.py:44 Request: GET https://api.metaicon.minerhubs.link/api/v1/client/clans?page=1&pageSize=12&isFilterMyClan=0&tokenId=25
-[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: None
-[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
-[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
-[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.205s
-[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"success","result":{"count":1,"dataList":[{"id":10000001,"tokenId":25,"name":"test","icon":"https://d1gkwh0kirtt3g.cloudfront.net/images/Mirship/0.webp","tokenName":"Mirship box","tokenImg":"https://d1gkwh0kirtt3g.cloudfront.net/images/Mirship/0.webp","islandId":"000001","islandName":"Miragio","memberCount":1,"score":0,"ESID":"1004760","uuid":null,"gameName":"c7A0"}]}}

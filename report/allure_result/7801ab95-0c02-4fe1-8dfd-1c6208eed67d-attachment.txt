@@ -1,1 +1,0 @@
-https://api.metaicon.minerhubs.link/api/v1/client/news/article?page=1&pageSize=3&typeKey=globalNews&needCancelRequest=true&needCancelUrl=%2Fnews%2Farticle

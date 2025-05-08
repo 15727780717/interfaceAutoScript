@@ -1,1 +1,0 @@
-https://api.metaicon.minerhubs.link/api/v1/client/paymentCurrency/list?page=1&pageSize=100&address=0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d&goodsId=27&contractType=1%2C3

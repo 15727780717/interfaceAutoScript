@@ -1,1 +1,0 @@
-https://api.metaicon.minerhubs.link/api/v1/client/activity/get_point_list?page=1&pageSize=10&isPay=-1

@@ -1,1 +1,0 @@
-{"code":0,"msg":"success","result":{"address":"0x7da7b3c10fbd050fc9cb0d9df273d9f871ca621d","myBindCode":"GDLR3NT49","bindAddress":"0x56FB4D2c91a2f058AB0a91D70a50eE5e86dcC7a0","bindESID":"1004760","bindClanId":10000003,"bindClanName":"flyn001","bindClanTokenId":44,"inviteCount":0,"inviteActiveCount":0,"receivedInvitePoints":0,"unreceivedInvitePoints":0}}
