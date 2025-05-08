@@ -1,0 +1,6 @@
+[32mINFO    [0m api_test:request_handler.py:44 Request: GET https://api.metaicon.minerhubs.link/api/v1/client/clans/clan_assets?clanId=10000010
+[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: None
+[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
+[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
+[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.199s
+[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"success","result":[{"tokenId":500000042,"roleType":4,"tokenImg":"https://d1gkwh0kirtt3g.cloudfront.net/images/Mirpass_test2/500000042.png","contractAddress":"0x9568d11a49dbebe82e4a1775e3100ee6400f7cc4"},{"tokenId":500000195,"roleType":4,"tokenImg":"https://d1gkwh0kirtt3g.cloudfront.net/images/Mirpass_test/500000195.png","contractAddress":"0x9568d11a49dbebe82e4a1775e3100ee6400f7cc4"},{"tokenId":500000194,"roleType":4,"tokenImg":"https://d1gkwh0kirtt3g.cloudfront.net/images/Mirpass_test/500000194.png","contractAddress":"0x9568d11a49dbebe82e4a1775e3100ee6400f7cc4"}]}

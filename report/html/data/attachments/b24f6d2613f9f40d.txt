@@ -1,1 +1,0 @@
-{"code":0,"msg":"success","result":{"inviteCode":"U2FsdGVkX19yQa9FYIR4MrtV1QKKk8ZBlCnvd5UO3uCsd/wO7T0pmNS813m9uTAO"}}

@@ -15,7 +15,7 @@ class BaseConfig:
     # 日志和报告目录
     LOG_DIR = BASE_DIR / "logs"
     # 测试报告目录
-    REPORT_DIR = BASE_DIR / "report"
+    REPORT_DIR = BASE_DIR / "report/allure_result"
     # 基础测试用例目录
     BASIC_DATA = BASE_DIR / "data/basic"
     # 场景测试用例目录

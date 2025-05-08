@@ -28,7 +28,7 @@ def read_cases_data():
     :return: 列表形式返回 yaml 文件数据
     """
     if not config.SCENARIO_DATA.exists():
-        raise FileNotFoundError(f"测试文件目录{config.TESTCASE_DIR} 不存在!")
+        raise FileNotFoundError(f"Test file directory {config.SCENARIO_DATA} does not exist!")
     # 创建空列表用于存储所有结果
     result_list = []
     try:
@@ -40,25 +40,35 @@ def read_cases_data():
         flattened_data = list(itertools.chain(*result_list))
         return flattened_data  # 返回包含所有结果的列表
     except UnicodeError:
-        logger.error("YAML文件 encoding 错误")
+        logger.error("YAML file encoding error")
 
 
 def read_basic_yaml(file_name):
-    file_path = Path.joinpath(config.BASIC_DATA, file_name)
-    with open(file_path, encoding='utf-8', errors='ignore') as f:
-        data = yaml.safe_load(f)
-        return data
+    if not config.BASIC_DATA.exists():
+        raise FileNotFoundError(f"Test file directory {config.BASIC_DATA} does not exist!")
+    try:
+        file_path = Path.joinpath(config.BASIC_DATA, file_name)
+        with open(file_path, encoding='utf-8', errors='ignore') as f:
+            data = yaml.safe_load(f)
+            return data
+    except UnicodeError:
+        logger.error("YAML file encoding error")
 
 
 def read_scenario_yaml(file_name):
-    file_path = Path.joinpath(config.SCENARIO_DATA, file_name)
-    with open(file_path, encoding='utf-8', errors='ignore') as f:
-        data = yaml.safe_load(f)
-        return data
+    if not config.SCENARIO_DATA.exists():
+        raise FileNotFoundError(f"Test file directory {config.SCENARIO_DATA} does not exist!")
+    try:
+        file_path = Path.joinpath(config.SCENARIO_DATA, file_name)
+        with open(file_path, encoding='utf-8', errors='ignore') as f:
+            data = yaml.safe_load(f)
+            return data
+    except UnicodeError:
+        logger.error("YAML file encoding error")
 
 
 if __name__ == '__main__':
-    res = read_basic_yaml("user_box_list.yaml")
+    res = read_scenario_yaml("STORE.yaml")
     print(res)
 
 

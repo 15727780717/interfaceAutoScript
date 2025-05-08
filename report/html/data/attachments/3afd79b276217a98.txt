@@ -1,1 +1,0 @@
-表达式: $.result, 预期结果: inviteCode, 实际结果: {'inviteCode': 'U2FsdGVkX19yQa9FYIR4MrtV1QKKk8ZBlCnvd5UO3uCsd/wO7T0pmNS813m9uTAO'}

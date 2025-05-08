@@ -10,7 +10,7 @@ from utils.extract_parameters import extract_data
 from utils.assertion import Assertion
 
 
-@allure.feature("user_box_list单接口测试")
+@allure.feature("user_box_list interface test cases")
 class TestUserBoxList:
     cases = read_basic_yaml("user_box_list.yaml")
 

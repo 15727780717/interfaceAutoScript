@@ -1,7 +1,0 @@
-[32mINFO    [0m api_test:request_handler.py:44 Request: POST https://api.metaicon.minerhubs.link/api/v1/client/PaymentOrder
-[35mDEBUG   [0m api_test:request_handler.py:45 Request Data: {'currencyId': '7', 'goodIds': '27', 'goodNum': '1', 'paymentType': 1}
-[35mDEBUG   [0m api_test:request_handler.py:46 Request Headers: {'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
-[32mINFO    [0m api_test:request_handler.py:61 Response status code: 200
-[32mINFO    [0m api_test:request_handler.py:62 Response time: 0.298s
-[35mDEBUG   [0m api_test:request_handler.py:63 Response body: {"code":0,"msg":"success","result":313}
-[32mINFO    [0m api_test:extract_parameters.py:37 Match to extract value：313
