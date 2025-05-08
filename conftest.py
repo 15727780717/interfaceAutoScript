@@ -49,8 +49,11 @@ def auth_headers(login_request_data):
 # 配置 Allure 报告中的 Environment
 def pytest_sessionstart(session):
     allure_dir = config.REPORT_DIR
+    # 确保目录存在
     os.makedirs(allure_dir, exist_ok=True)
-    with open(f"{allure_dir}/environment.properties", "w") as f:
+    # 环境文件路径
+    env_path = os.path.join(allure_dir, "environment.properties")
+    with open(env_path, "w", encoding='utf-8') as f:
         f.write(f"BaseURL={config.BASE_URL}\n")
         f.write("TestingEnvironment=FZ\n")
         f.write("PythonVersion=3.8\n")
