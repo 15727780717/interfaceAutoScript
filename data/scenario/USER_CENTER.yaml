@@ -1,3 +1,4 @@
+# INVENTORY Ä£¿é
 - name: my_collect
   request:
     method: GET
@@ -68,6 +69,7 @@
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
 
+# ACTIVITY Ä£¿é
 - name: activity
   request:
     method: GET
@@ -80,6 +82,19 @@
     - eq: ["$.code", 0]
     - eq: ["$.msg", "Query successfully"]
 
+- name: activity_search_Transfer
+  request:
+    method: GET
+    url: /api/v1/client/transfer/activity?page=1&pageSize=10&type=Transfer
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "Query successfully"]
+
+# PPTS Ä£¿é
 - name: get_point_list_All
   request:
     method: GET
@@ -129,10 +144,13 @@
     - eq: ["$.msg", "success"]
     - contains: ["$.result", "currentPoints"]
 
+# MIRPASS Ä£¿é
 - name: passports
   request:
     method: GET
     url: /api/v1/client/passports?type=2&page=1&pageSize=10
+  extract:
+    - MirpassTokenId: $.result.dataList[0].tokenId
   # ¶ÏÑÔ
   assertions:
     # ×´Ì¬Âë¶ÏÑÔ
@@ -142,6 +160,48 @@
     - eq: ["$.msg", "success"]
     - contains: ["$.result", "collectId"]
 
+- name: main
+  request:
+    method: POST
+    url: /api/v1/client/passports/main
+    data:
+      tokenId: ${MirpassTokenId}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+
+
+- name: passports_ID_from_low_to_high
+  request:
+    method: GET
+    url: /api/v1/client/passports?type=2&page=1&pageSize=10&orderField=tokenId&orderType=asc
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "collectId"]
+
+- name: passports_ID_from_low_to_low
+  request:
+    method: GET
+    url: /api/v1/client/passports?type=2&page=1&pageSize=10&orderField=tokenId&orderType=desc
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "collectId"]
+
+# LIST OF ORDERS Ä£¿é
 - name: paymentOrder_list
   request:
     method: GET
@@ -155,6 +215,7 @@
     - eq: ["$.msg", "success"]
     - contains: ["$.result", "dataList"]
 
+# Set Primary
 - name: change_mainWallet
   request:
     method: POST

@@ -59,6 +59,7 @@
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
 
+# 付款下单
 - name: PaymentOrder
   request:
     method: POST
@@ -115,6 +116,7 @@
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
 
+# 取消订单
 - name: order_cancle
   request:
     method: PUT

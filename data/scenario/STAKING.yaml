@@ -14,13 +14,45 @@
     - eq: ["$.msg", "success"]
     - contains: ["$.result", "title"]
 
+# ªÒ»°Œ¥÷ —∫µƒ token list
+- name: pledge_choice_list
+  request:
+    method: GET
+    url: /api/v1/client/pledge_manage/pledge_choice_list?collectAddress=${pledgeItemAddress}
+  extract:
+    - stakeTokenId: $.result[0].tokenId  # Œ¥÷ —∫ tokenId
+  # ∂œ—‘
+  assertions:
+    # ◊¥Ã¨¬Î∂œ—‘
+    - eq: ["status_code", 200]
+    # JSONœÏ”¶∂œ—‘
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result[0]", "tokenId"]
+
+# ÷ —∫ token
+- name: pledge
+  request:
+    method: POST
+    url: /api/v1/client/pledge_manage/pledge
+    data:
+      poolId: 11
+      tokenIds: !!str ${stakeTokenId}  # Œ¥÷ —∫ tokenId
+  # ∂œ—‘
+  assertions:
+    # ◊¥Ã¨¬Î∂œ—‘
+    - eq: ["status_code", 200]
+    # JSONœÏ”¶∂œ—‘
+    - eq: ["$.code", 1]
+    - eq: ["$.msg", "Wait for the previous pledge to complete"]
+
 - name: pledge_logs
   request:
     method: GET
     url: /api/v1/client/pledge_manage/pledge_logs?page=1&pageSize=99&poolId=11&needCancelRequest=true&needCancelUrl=%2Fpledge_manage%2Fpledge_logs
   extract:
     - pledgeId: $.result.dataList[0].id  # ÷ —∫ŒÔ∆∑id
-    - pledgeTokenId: $.result.dataList[0].pledgeTokenId  # ∆•≈‰πÊ‘Ú
+    - pledgeTokenId: $.result.dataList[0].pledgeTokenId  # “—÷ —∫ tokenId
   # ∂œ—‘
   assertions:
     # ◊¥Ã¨¬Î∂œ—‘
@@ -54,10 +86,12 @@
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
 
-- name: pledge_choice_list
+- name: unpledge
   request:
-    method: GET
-    url: /api/v1/client/pledge_manage/pledge_choice_list?collectAddress=${pledgeItemAddress}
+    method: POST
+    url: /api/v1/client/pledge_manage/unpledge
+    data:
+      pledgeId: ${pledgeId}
   # ∂œ—‘
   assertions:
     # ◊¥Ã¨¬Î∂œ—‘
@@ -65,5 +99,3 @@
     # JSONœÏ”¶∂œ—‘
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
-    - contains: ["$.result[0]", "tokenId"]
-
