@@ -36,5 +36,15 @@ def get_eoa_wallet():
     return config.EOA_WALLET_ADDRESS
 
 
+# 生成俱乐部兑换码
+def generate_redemption_code():
+    """生成8位数字+大写字母的兑换码"""
+    # 定义字符池：数字(0-9) + 大写字母(A-Z)
+    characters = string.digits + string.ascii_uppercase
+    # 随机选择8个字符并组合成字符串
+    code = ''.join(random.choice(characters) for _ in range(8))
+    return code
+
+
 if __name__ == '__main__':
-    print(get_timestamp())
+    print(generate_redemption_code())

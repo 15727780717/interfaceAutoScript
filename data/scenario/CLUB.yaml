@@ -1,3 +1,4 @@
+# CLUB SEARCH
 - name: games
   request:
     method: GET
@@ -28,6 +29,19 @@
     - eq: ["$.msg", "success"]
     - contains: ["$.result.dataList[0]", "name"]
 
+- name: ships
+  request:
+    method: GET
+    url: /api/v1/client/clans/ships
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result[0]", "clanName"]
+
 - name: search_for_club_name
   request:
     method: GET
@@ -40,6 +54,19 @@
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
     - contains: ["$.result.dataList[0]", "name"]
+
+- name: search_for_error_club_name
+  request:
+    method: GET
+    url: /api/v1/client/clans?page=1&pageSize=12&isFilterMyClan=0&name=abc
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - eq: ["$.result.count",0]
 
 - name: search_for_club_ESID
   request:
@@ -54,6 +81,19 @@
     - eq: ["$.msg", "success"]
     - contains: ["$.result.dataList[0]", "ESID"]
 
+- name: search_for_error_club_ESID
+  request:
+    method: GET
+    url: /api/v1/client/clans?page=1&pageSize=12&isFilterMyClan=0&esid=9999999
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - eq: ["$.result.count", 0]
+
 - name: search_for_club_MirshipID
   request:
     method: GET
@@ -66,6 +106,19 @@
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
     - contains: ["$.result.dataList[0]", "tokenId"]
+
+- name: search_for_error_club_MirshipID
+  request:
+    method: GET
+    url: /api/v1/client/clans?page=1&pageSize=12&isFilterMyClan=0&tokenId=999
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - eq: ["$.result.count", 0]
 
 - name: mine_clans
   request:
@@ -80,10 +133,13 @@
     - eq: ["$.msg", "success"]
     - contains: ["$.result.dataList[0]", "name"]
 
-- name: ships
+# CREATE CLUB
+- name: islands
   request:
     method: GET
-    url: /api/v1/client/clans/ships
+    url: /api/v1/client/clans/islands
+  extract:
+    - islandId: $.result[0].islandId
   # ¶ÏÑÔ
   assertions:
     # ×´Ì¬Âë¶ÏÑÔ
@@ -91,14 +147,33 @@
     # JSONÏìÓ¦¶ÏÑÔ
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
-    - contains: ["$.result[0]", "clanName"]
+    - contains: ["$.result[0]", "islandId"]
 
+# REDEEM MIRPASS
+# Ê¹ÓÃ´íÎóµÄ¶Ò»»Âë
+- name: join
+  request:
+    method: POST
+    url: /api/v1/client/clans/join
+    data:
+      code: ${generate_redemption_code()}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 1]
+    - eq: ["$.msg", "redeem code not found"]
+
+# MY CLUB
 - name: detail
   request:
     method: GET
     url: /api/v1/client/clans/detail
   extract:
-    - myClubId: $.result.id  # ¾ãÀÖ²¿Ãû³Æ
+    - myClubId: $.result.id  # myClubId
+    - myClubName: $.result.name  # myClubName
+    - myClubIcon: $.result.icon
   # ¶ÏÑÔ
   assertions:
     # ×´Ì¬Âë¶ÏÑÔ
@@ -113,7 +188,9 @@
     method: GET
     url: /api/v1/client/clans/my-members
   extract:
-    - primaryTokenId: $.result.dataList[0].tokenId  # ¾ãÀÖ²¿Ãû³Æ
+    - primaryTokenId: $.result.dataList[0].tokenId  # Mirpass tokenId
+    - myClubClanId: $.result.dataList[0].clanId
+    - myClubAddress: $.result.dataList[0].address
   # ¶ÏÑÔ
   assertions:
     # ×´Ì¬Âë¶ÏÑÔ
@@ -149,10 +226,19 @@
     - eq: ["$.msg", "success"]
     - contains: ["$.result[0]", "key"]
 
-- name: clan_assets
+# SETTING
+# ±à¼­¾ãÀÖ²¿ÐÅÏ¢
+- name: info
   request:
-    method: GET
-    url: /api/v1/client/clans/clan_assets?clanId=${myClubId}
+    method: POST
+    url: /api/v1/client/clans/info
+    data:
+      clanId: "${myClubId}"
+      desc: "Test Editing Club"
+      icon: "${myClubIcon}"
+      name: ${myClubName}
+      islandId:
+      tokenId:
   # ¶ÏÑÔ
   assertions:
     # ×´Ì¬Âë¶ÏÑÔ
@@ -160,12 +246,12 @@
     # JSONÏìÓ¦¶ÏÑÔ
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
-    - contains: ["$.result[0]", "tokenImg"]  # ÏìÓ¦½á¹ûÖÐ°üº¬Ô¤ÆÚ½á¹û
 
-- name: invite_code
+# MY CLUBS
+- name: my_clans
   request:
     method: GET
-    url: /api/v1/client/clans/invite_code?clanId=${myClubId}
+    url: /api/v1/client/clans?page=1&pageSize=10&isFilterMyClan=1
   # ¶ÏÑÔ
   assertions:
     # ×´Ì¬Âë¶ÏÑÔ
@@ -173,7 +259,47 @@
     # JSONÏìÓ¦¶ÏÑÔ
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
-    - contains: ["$.result", "inviteCode"]
+    - contains: ["$.result", "dataList"]
+
+# MIRPASS
+- name: search_Address
+  request:
+    method: GET
+    url: /api/v1/client/clans/members?clanId=${myClubClanId}&pageSize=10&page=1&address=${myClubAddress}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "dataList"]  # ÏìÓ¦½á¹ûÖÐ°üº¬Ô¤ÆÚ½á¹û
+
+- name: search_ESID
+  request:
+    method: GET
+    url: /api/v1/client/clans/members?clanId=${myClubClanId}&pageSize=10&page=1&address=&esid=${myClubClanId}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "dataList"]  # ÏìÓ¦½á¹ûÖÐ°üº¬Ô¤ÆÚ½á¹û
+
+- name: search_MirpassID
+  request:
+    method: GET
+    url: /api/v1/client/clans/members?clanId=${myClubClanId}&pageSize=10&page=1&address=&tokenId=${primaryTokenId}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "dataList"]
 
 - name: switch_primary_club
   request:
@@ -188,3 +314,85 @@
     # JSONÏìÓ¦¶ÏÑÔ
     - eq: ["$.code", 0]
     - eq: ["$.msg", "success"]
+
+- name: invite_code
+  request:
+    method: GET
+    url: /api/v1/client/clans/invite_code?clanId=${myClubId}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "inviteCode"]
+
+# CODES
+- name: create_code
+  request:
+    method: POST
+    url: /api/v1/client/clans/redeem_code
+    data:
+      clanId: ${myClubClanId}
+      count: "1"
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 1]
+    - eq: ["$.msg", "Create redeem code limit."]
+
+- name: redeem_codes
+  request:
+    method: GET
+    url: /api/v1/client/clans/redeem_codes?pageSize=10&page=1&clanId=${myClubClanId}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "dataList"]
+
+- name: redeem_configs
+  request:
+    method: GET
+    url: /api/v1/client/clans/redeem_configs?clanId=${myClubClanId}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "redeemClanRedeemLimit"]
+
+- name: export_codes
+  request:
+    method: GET
+    url: /api/v1/client/clans/redeem_codes/all?useType=1&clanId=${myClubClanId}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result", "dataList"]
+
+# ASSETS
+- name: clan_assets
+  request:
+    method: GET
+    url: /api/v1/client/clans/clan_assets?clanId=${myClubId}
+  # ¶ÏÑÔ
+  assertions:
+    # ×´Ì¬Âë¶ÏÑÔ
+    - eq: ["status_code", 200]
+    # JSONÏìÓ¦¶ÏÑÔ
+    - eq: ["$.code", 0]
+    - eq: ["$.msg", "success"]
+    - contains: ["$.result[0]", "tokenImg"]  # ÏìÓ¦½á¹ûÖÐ°üº¬Ô¤ÆÚ½á¹û

@@ -16,6 +16,7 @@ ALLOWED_FUNCTIONS = {
     "get_eoa_sign": get_eoa_sign,
     "get_eoa_wallet": get_eoa_wallet,
     "get_timestamp": get_timestamp,
+    "generate_redemption_code": generate_redemption_code
 }
 
 
